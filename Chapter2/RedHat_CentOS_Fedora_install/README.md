@@ -20,7 +20,7 @@ sudo dnf -y update
 sudo dnf install -y ansible
 ```
 
-## Build Ansibel rpm file from source
+## Build Ansible rpm file from source
 ```
 cd /tmp
 sudo yum install -y git make
