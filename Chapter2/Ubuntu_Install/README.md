@@ -1,6 +1,6 @@
 # Ubuntu package installation
 
-## Install Ansible using PPA
+## Install Ansible using PPA repository
 
 ```
 sudo apt install -y software-properties-common
