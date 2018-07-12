@@ -62,7 +62,7 @@ ansible servers -m copy --args="src=./file1.txt dest=~/file1.txt"
          owner: setup
          mode: 0766
 ```
-# Annsible Return Values
+# Ansible Return Values
 ```
 # using return values with handlers
 ---
