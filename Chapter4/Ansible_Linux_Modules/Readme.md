@@ -419,17 +419,70 @@ ansible -m shell -a hostname servers
 ```
 ## Linux Networking Modules
 ```
-# inerface_file module
+# inerfaces_file module
+    - name: Change mtu to 1500 for eth1 interface
+      Interfaces_file:
+         dest: /etc/network/interfaces
+         iface: eth1
+         option: mtu
+         value: 1500
+         backup: yes
+         state: present
 
+# ufw module
+    - name: add port 5000 for iperf testing on all hosts
+      ufw:
+         rule: allow
+         port: 5000
+         proto: tcp
 
-
-
+# haproxy modules
+    - name: disable a haproxy backend host
+      haproxy:
+         state: disabled
+         host: '{{ inventory_hostname }}'
+         socket: /usr/loca/haproxy/haproxy.sock
+         backend: www
+         wait: yes
 ```
+## Linux Storage Modules
+```
+# filesystem module
+    - name: create a filesystem from a newly added disk
+      filesystem:
+         fstype: ext4
+         dev: /dev/sdc1
 
+# mount module
+    - name: mount the recently added volume to the system
+      mount:
+         path: /media/disk1 
+         fstype: ext4
+         boot: yes
+         state: mounted
+         src: /dev/sdc1
 
+# parted module
+    - name: remove a no longer needed partition
+      mount:
+         device: /dev/sdc
+         number: 1
+         state: absent
 
+# gluster_volume module
 
-
+    - name: create a new GlusterFS volume
+      Gluster_volume:
+         status: present
+         name: gluster1
+         bricks: /bridkes/brik1/g1
+         rebalance: yes
+         cluster: 
+            - 192.168.10.10
+            - 192.168.10.11
+            - 192.168.10.12
+         run_once: true
+```
 
 
 
