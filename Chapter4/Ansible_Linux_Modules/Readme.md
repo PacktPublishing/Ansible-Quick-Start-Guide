@@ -444,6 +444,14 @@ ansible -m shell -a hostname servers
          socket: /usr/loca/haproxy/haproxy.sock
          backend: www
          wait: yes
+         
+# wakeonlan module
+    - name: start powered off hosts
+      wakeonlan:
+         mac: "{{ hostvars[inventory_hostname].ansible_default_ipv4.macaddress }}"
+         port: 9
+     delegate_to: localhost
+
 ```
 ## Linux Storage Modules
 ```
