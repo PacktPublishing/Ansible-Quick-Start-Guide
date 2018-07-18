@@ -1,6 +1,6 @@
 # Ansible Windows Modules
 
-## Widnows System Modules
+## Windows System Modules
 ```
 # win_user module
 
