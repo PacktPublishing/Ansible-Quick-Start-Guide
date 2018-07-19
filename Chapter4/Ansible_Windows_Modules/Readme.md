@@ -4,7 +4,7 @@
 ```
 # win_user (win_group) module
 ---
-- name: Linux Module running
+- name: Windows Module running
   hosts: winservers
   gather_facts: false
   tasks:
