@@ -2,7 +2,7 @@
 ```
 # net_get (network_put) modules
 ---
-- name: Linux Module running
+- name: Network Module running
   hosts: ciscosw
   tasks:
     - name: backup a running configuration for a cisco switch
@@ -58,11 +58,3 @@
              - GigabitEthernet0/2
 
 ```
-
-
-
-
-
-
-
-
