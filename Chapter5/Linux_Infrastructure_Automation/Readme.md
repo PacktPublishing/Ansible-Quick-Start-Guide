@@ -70,8 +70,8 @@
   become: yes
   become_user: setup
   gather_facts: yes
-  tasks:
-…
+  tasks: ...
+
 ```
 
 ### Use case 2: Creating a new user with all its settings
