@@ -13,27 +13,27 @@
   tasks:
     - name: Update Debian Linux packages with Index updated
       apt: 
-           upgrade: dist
-           update_cache: yes
+        upgrade: dist
+        update_cache: yes
       when: ansible_os_family == "Debian"
 
     - name: Update Red Hat Linux packages with Index updated
       yum: 
-           name: "*"
-           state: latest
-           update_cache: yes
+        name: "*"
+        state: latest
+        update_cache: yes
       when: ansible_os_family == "RedHat"
 
     - name: Clean up Debian Linux from cache and unused packages
       apt: 
-           autoremove: yes 
-           autoclean: yes
+        autoremove: yes 
+        autoclean: yes
       when: ansible_os_family == "Debian"
 
     - name: Clean up Red Hat Linux from cache and unused packages
       shell: yum clean all; yum autoremove
       when: ansible_os_family == "RedHat"
-     ignore_errors: yes
+      ignore_errors: yes
 
    - name: Check if Debian system requires a reboot
      shell: "[ -f /var/run/reboot-required ]"
@@ -41,8 +41,8 @@
      register: reboot_required
      changed_when: reboot_required.rc == 0
      notify: reboot
-    when: ansible_os_family == "Debian"
-    ignore_errors: yes
+     when: ansible_os_family == "Debian"
+     ignore_errors: yes
 
    - name: Check if Red Hat system requires a reboot
      shell: "[ $(rpm -q kernel|tail -n 1) != kernel-$(uname -r) ]"
