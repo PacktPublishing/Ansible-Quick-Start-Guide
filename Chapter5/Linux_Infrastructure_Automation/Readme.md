@@ -451,12 +451,68 @@ mkpasswd --method=sha-512
 ### Use case 2: LAMP server setup and configuration
 
 ```
+---
+- name: Install a LAMP on Linux hosts
+  hosts: webservers
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: Install Lamp packages
+      apt: 
+         name: '{{ item }}'
+         state: latest
+         update_cache: yes
+      with_items:
+         - apache2
+         - mysql-server
+         - php
+         - libapache2-mod-php
+         - python-mysqldb
 
+    - name: Create the Apache2 web folder
+      file: 
+         dest: "/var/www"
+         state: directory
+         mode: 0700
+         owner: "www-data"
+         group: "www-data"   
 
+    - name: Setup Apache2 modules
+      command: a2enmod {{ item }} creates=/etc/apache2/mods-enabled/{{ item }}.load
+      with_items:
+         - deflate
+         - expires
+         - headers
+         - macro
+         - rewrite
+         - ssl
 
+    - name: Setup PHP modules
+      apt: 
+         name: '{{ item }}'
+         state: latest
+         update_cache: yes
+      with_items:
+         - php-ssh2
+         - php-apcu
+         - php-pear
+         - php-curl
+         - php-gd
+         - php-imagick
+         - php-mcrypt
+         - php-mysql
+         - php-json
 
+    - name: Remove MySQL test database
+      Mysql_db:  db=test state=absent login_user=root login_password="DBp@55w0rd"
 
+    - name: Restart mysql server
+      service: 
+         name: mysql
+         state: restarted
 
-
-
-
+    - name: Restart Apache2
+      service: 
+         name: apache2
+         state: restarted
+```
