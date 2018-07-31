@@ -2,6 +2,6 @@
 
 ## System management Automation
 
-# Use case 1: System update automation
+### Use case 1: System update automation
 
 ```
