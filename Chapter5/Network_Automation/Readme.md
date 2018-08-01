@@ -45,7 +45,7 @@
 
 ```
 ---
-- name:  Patch CISCO network devices 
+- name:  Change configuration for CISCO network devices 
   hosts: ciscoswitches
   become: yes
   become_method: enable
