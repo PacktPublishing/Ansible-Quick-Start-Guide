@@ -144,11 +144,3 @@ ansible_connection: docker
     - name: Test mysql access
       shell: mysql -u user1 -p {{ mysql_user1_password }}
 ```
-## 
-
-
-
-
-
-
-
