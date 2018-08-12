@@ -30,7 +30,7 @@
     - name: Execute a Windows Write Filter enabling command and identify if it made change
       win_shell: ewfm.exe -conf enable
       register: output
-      changed_when: "output.stdout == 'Awaiting for next boot to apply change.'" 
+      changed_when: "output.stdout == 'Awaiting for next boot to apply the change.'" 
 ```
 ## Good usage for Ansible conditions
 ```
@@ -84,11 +84,11 @@ mysql_db_pass = '{{ db_password  }}'
   hosts: linuxservers
   become: yes
   remote_user: setup
-  gather_facts: true
-  vars_files:
-     - /home/admin/variables/database2.yml
-    
+  gather_facts: true    
   tasks:
+    - name: Import varible from an otehr YAML
+      include_vars: /home/admin/variables/database2.yml
+      
     - name: Copy db config file 
       template: 
           src: /home/admin/template/db.conf.j2
