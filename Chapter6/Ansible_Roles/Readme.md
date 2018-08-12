@@ -58,8 +58,6 @@ server {{ ntpserv2 }}
 ```
 ### Defaults folder
 ```
-vars/main.yml:
----
 defaults/main.yml:
 ---
 timout: 2000
@@ -90,6 +88,27 @@ test/main.yml:
 # Role creation
 cd ~/Roles/
 ansible-galaxy init samba.lab.edu
+
+# Role folder structure
+samba.lab.edu
+└── README.md
+├── defaults
+│   └── main.yml
+├── files
+│    
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── tasks
+│   └── main.yml
+├── templates
+│    
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
 
 # Role folders and files
 template/smb.conf.j2:
@@ -202,8 +221,6 @@ smb_grp: smbgrp
 smb_user: 'shareduser1'
 smb_pass: '5h@redP@55w0rd'
 
-Now we create the OS specific tasks for setting up the service.
-
 tasks/Debian_OS.yml:
 ---
 - name: Install Samba packages on Debian family Linux
@@ -235,8 +252,6 @@ tasks/RedHat_OS.yml:
     state: true
     persistent: true
   with_items: "{{ smb_selinux_bln }}"
-  
-Let us know finish by the main task and the handlers for it.
 
 tasks/main.yml:
 ---
@@ -298,8 +313,6 @@ tasks/main.yml:
     enabled: true
   with_items: "{{ redhat_smb_services }}"
   when: ansible_os_family == 'RedHat'
-
-We finish with defining the handlers for service management
 
 /handlers/main.yml:
 ---
