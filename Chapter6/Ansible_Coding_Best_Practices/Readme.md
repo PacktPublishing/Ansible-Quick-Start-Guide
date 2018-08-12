@@ -52,6 +52,7 @@
       when: 'ansible_distribition == "RedHat"'
 ```
 ## Smarter usage for Ansible loops
+```
 ---
 - name: Copy users config files to their project directory
   hosts: linuxservers
@@ -66,12 +67,57 @@
           mode: '{{ item.mode | default("0744")  }}'
           owner:  '{{ item.owner | default("nobody") }}'
       when_items: 
-         - '{{ src="/media/share/config/user1.conf" dest="/usr/loca/projetsfolder/user1" mode="0774" owner="user1" }}'
-         - '{{ src="/media/share/config/user2.conf" dest="/usr/loca/projetsfolder/user2" mode="0700" owner="user2" }}'
-         - '{{ src="/media/share/samples/users.conf" dest="/usr/loca/projetsfolder/" mode="0777" }}'
+        - '{{ src="/media/share/config/user1.conf" dest="/usr/loca/projetsfolder/user1" mode="0774" owner="user1" }}'
+        - '{{ src="/media/share/config/user2.conf" dest="/usr/loca/projetsfolder/user2" mode="0700" owner="user2" }}'
+        - '{{ src="/media/share/samples/users.conf" dest="/usr/loca/projetsfolder/" mode="0777" }}'
 ```
+## Template file usage
+```
+db.conf.j2:
+mysql_db_hosts = '{{ db_serv_hostname  }}'
+mysql_db_name = '{{ db_name }}'
+mysql_db_user = '{{ db_username  }}'
+mysql_db_pass = '{{ db_password  }}'
 
+---
+- name: Copy Database configuration file
+  hosts: linuxservers
+  become: yes
+  remote_user: setup
+  gather_facts: true
+  vars_files:
+     - /home/admin/variables/database2.yml
+    
+  tasks:
+    - name: Copy db config file 
+      template: 
+          src: /home/admin/template/db.conf.j2
+          dest: /etc/mysql/db.conf
+          owner: bin
+          group: wheel
+          mode: 0600
+```
+## Stating tasks status
+```
+  tasks:
+    - name: create a new file
+      file: 
+          path: /usr/local/projects/vars.txt
+          state: present
 
+    - name: removing line to a file
+      lineinfile: 
+          path: /usr/local/projects/conf.txt
+          line: "adminuser = user0"
+          state: absent
+```
+## Shared storage space for data tasks
+```
+  tasks:
+    - name: Copy a tool archive to remote host 
+      copy: 
+          src: /media/nfshsare/Tools/tool1.tar.gz
+          dest: /usr/local/tools/
+          mode: 0755
 
-
-
+```
