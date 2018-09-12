@@ -165,10 +165,7 @@ galaxy_info:
       versions:
         - 6
         - 7
-    - name: EL
-      versions:
-        - 6
-        - 7
+
   galaxy_tags:
     - system
     - networking
