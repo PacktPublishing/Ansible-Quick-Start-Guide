@@ -119,14 +119,16 @@ ansible_connection: docker
   remote_user: setup
   gather_facts: false
   tasks:
-    - meta: flush_handlers
+    - name: Flush the playbook handlers
+      meta: flush_handlers
 
     - name: Change ntp service config
       lineinfile:
        path: /etc/ntp/ntp.conf
        line: "server 0.us.pool.ntp.org"
 
-    - meta: flush_handlers
+    - name: Flush the playbook handlers
+      meta: flush_handlers
 
   handlers:
     - name: restart ntp service
