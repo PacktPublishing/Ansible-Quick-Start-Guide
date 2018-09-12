@@ -40,7 +40,7 @@ ENV ANSIBLE_GATHERING 			smart
 ENV ANSIBLE_HOST_KEY_CHECKING 		false
 ENV ANSIBLE_RETRY_FILES_ENABLED 	false
 
-RUN 	useradd --create-home --home-dir $HOME ansible && \
+RUN 	adduser -h $HOME ansible && \
 	chown -R ansible:ansible $HOME
 
 RUN 	echo "ansible ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
