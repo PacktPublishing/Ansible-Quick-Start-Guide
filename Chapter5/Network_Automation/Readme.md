@@ -59,40 +59,40 @@
   gather_facts: yes
   tasks:
     - name: Update network device hostname to match the one used in the inventory
-       ios_config:
-          authorize: yes
-          lines: ['hostname {{ inventory_hostname }}'] 
-          force: yes
+      ios_config:
+         authorize: yes
+         lines: ['hostname {{ inventory_hostname }}'] 
+         force: yes
 
     - name: Change the CISCO devices login banner
-       ios_config:
-          authorize: yes
-          lines:
-             - banner motd ^This device is controlled via Ansible. Please refrain from doing any manual modification^
+      ios_config:
+         authorize: yes
+         lines:
+            - banner motd ^This device is controlled via Ansible. Please refrain from doing any manual modification^
 
     - name: upgrade SSh service to version2
-       ios_config:
-          authorize: yes
-          lines:
-             - ip ssh version 2
+      ios_config:
+         authorize: yes
+         lines:
+            - ip ssh version 2
 
     - name: Configure VTP to use transparent mode
-       ios_config:
-          authorize: yes
-          lines:
-             - vtp mode transparent
+      ios_config:
+         authorize: yes
+         lines:
+            - vtp mode transparent
 
     - name: Change DNS servers to point to the Google DNS
-       ios_config:
-          authorize: yes
-          lines:
-             - ip name-server 8.8.8.8
-             - ip name-server 8.8.4.4
+      ios_config:
+         authorize: yes
+         lines:
+            - ip name-server 8.8.8.8
+            - ip name-server 8.8.4.4
 
     - name: Configure some realisable NTP servers
-       ios_config:
-          authorize: yes
-          lines:
-             - ntp server time.nist.gov
-             - ntp server 0.uk.pool.ntp.org
+      ios_config:
+         authorize: yes
+         lines:
+            - ntp server time.nist.gov
+            - ntp server 0.uk.pool.ntp.org
 ```
