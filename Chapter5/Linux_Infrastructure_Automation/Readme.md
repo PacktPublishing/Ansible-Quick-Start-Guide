@@ -504,7 +504,7 @@ mkpasswd --method=sha-512
          - php-json
 
     - name: Remove MySQL test database
-      Mysql_db:  db=test state=absent login_user=root login_password="DBp@55w0rd"
+      mysql_db:  db=test state=absent login_user=root login_password="DBp@55w0rd"
 
     - name: Restart mysql server
       service: 
