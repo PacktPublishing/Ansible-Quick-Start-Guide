@@ -269,7 +269,7 @@ tasks/main.yml:
     append: yes
   
 - name: Define the user password within Samba 
-  shell: "(echo {{ smb_pass }}; echo {{ smb_pass }}) | smb_pass -s -a {{ smb_user }}"
+  shell: "(echo {{ smb_pass }}; echo {{ smb_pass }}) | smbpasswd -s -a {{ smb_user }}"
 
 - name: Check that  the shared directory exist
   stat:
@@ -315,14 +315,14 @@ tasks/main.yml:
 ---
 - name: Restart Samba
   service:
-    name: {{ item }}
+    name: "{{ item }}"
     state: restarted
 with_items: "{{ debian_smb_services }}"
 when: ansible_os_family == 'Debian'
 
 - name: Restart Samba
   service:
-    name: {{ item }}
+    name: "{{ item }}"
     state: restarted
 with_items: "{{ redhat_smb_services }}"
 when: ansible_os_family == 'RedHat'
