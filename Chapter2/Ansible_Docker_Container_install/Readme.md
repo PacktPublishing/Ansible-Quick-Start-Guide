@@ -40,8 +40,8 @@ ENV ANSIBLE_GATHERING 			smart
 ENV ANSIBLE_HOST_KEY_CHECKING 		false
 ENV ANSIBLE_RETRY_FILES_ENABLED 	false
 
-RUN 	adduser -h $HOME ansible && \
-	chown -R ansible:ansible $HOME
+RUN 	adduser -h $HOME ansible -D \
+	&& chown -R ansible:ansible $HOME
 
 RUN 	echo "ansible ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
 	&& chmod 0440 /etc/sudoers
@@ -81,6 +81,3 @@ docker run --rm -it -v ~:/home/ansible \
 ```
 Ansibleplaybook play tasks.yml -i inventory/hosts 
 ```
-
-
-
