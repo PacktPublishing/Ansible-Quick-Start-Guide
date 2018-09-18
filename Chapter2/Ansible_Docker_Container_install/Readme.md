@@ -54,11 +54,11 @@ ENTRYPOINT ["ansible"]
 
 ## Building the Ansible container
 ```
-docker build -t dockerhub-user/ansible .
+docker build -t ansible .
 ```
 ## Running Ansible container example
 ```
-docker run --rm -it -v ~:/home/ansible dockerhub-user/ansible --version
+docker run --rm -it -v ~:/home/ansible ansible --version
 ```
 
 ## Running a ping using ansibel container
