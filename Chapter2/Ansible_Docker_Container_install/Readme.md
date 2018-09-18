@@ -66,7 +66,7 @@ docker run --rm -it -v ~:/home/ansible ansible --version
 docker run --rm -it -v ~:/home/ansible \
 	-v ~/.ssh/id_rsa:/ansible/.ssh/id_rsa \
 	-v ~/.ssh/id_rsa.pub:/ansible/.ssh/id_rsa.pub \
- 	dockerhub-user/ansible -m ping 192.168.1.10
+ 	ansible -m ping 192.168.1.10
 ```
 ## Making script to run Ansible-playbook container
 ```
@@ -75,7 +75,7 @@ docker run --rm -it -v ~:/home/ansible \
 	-v ~/.ssh/id_rsa:/ansible/.ssh/id_rsa \
 	-v ~/.ssh/id_rsa.pub:/ansible/.ssh/id_rsa.pub \
 	-v /var/log/ansible/ansible.log \
- 	dockerhub-user/ansible “$@”
+ 	ansible “$@”
 ```
 ## Ansibleplaybook usage
 ```
