@@ -412,7 +412,7 @@ mkpasswd --method=sha-512
     - name: Download a tool to be compiled on each host
       get-url:  
           src: http://cegg.unige.ch/pub/newick-utils-1.6-Linux-x86_64-enabled-extra.tar.gz 
-          dest: /usr/local/ newick.tar.gz
+          dest: /usr/local/newick.tar.gz
           mode: 0755
 
     - name: Unarchive the downloaded tool on each host
