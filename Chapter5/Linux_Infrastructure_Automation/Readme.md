@@ -410,7 +410,7 @@ mkpasswd --method=sha-512
       shell:  Rscript --vanilla -e "source('https://bioconductor.org/biocLite.R'); biocLite(ask=FALSE); biocLite(c('ggplots2', 'edgeR','optparse'), ask=FALSE);"
 
     - name: Download a tool to be compiled on each host
-      get-url:  
+      get_url:  
           src: http://cegg.unige.ch/pub/newick-utils-1.6-Linux-x86_64-enabled-extra.tar.gz 
           dest: /usr/local/newick.tar.gz
           mode: 0755
