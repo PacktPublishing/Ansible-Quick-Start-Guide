@@ -406,6 +406,7 @@ mkpasswd --method=sha-512
          - cython
          - scipy
          - biopython
+         - pandas
 
     - name: Install tools on R CRAN using Bioconductor as source 
       shell:  Rscript --vanilla -e "source('https://bioconductor.org/biocLite.R'); biocLite(ask=FALSE); biocLite(c('ggplots2', 'edgeR','optparse'), ask=FALSE);"
