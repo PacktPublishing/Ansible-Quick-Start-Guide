@@ -431,10 +431,7 @@ mkpasswd --method=sha-512
           target: install
 
     - name: Create Symlink to the tool’s binary to be executable from anywhere in the system 
-      file:  
-          path: /usr/local/newick-utils-1.6/src/nw_display
-          dest: /usr/local/bin/nw_display
-          state: link
+      shell: ln -s -f /usr/local/newick-utils-1.6/src/nw_display /usr/local/bin/nw_display
 
     - name: Installing another tool located into a github repo
       git:  
@@ -443,7 +440,7 @@ mkpasswd --method=sha-512
           clone: yes
 
     - name: Setup the application using python compiler
-      command: python3 ./setup.py install
+      command: cd /usr/local/DESMAN; python3 ./setup.py install
 ```
 ### Use case 2: LAMP server setup and configuration
 
