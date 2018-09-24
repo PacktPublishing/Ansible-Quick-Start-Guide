@@ -394,7 +394,7 @@ mkpasswd --method=sha-512
           name: '{{ item }}'
       with_items:
          - Data::Dumper
-         - File::PATH
+         - File::Path
          - Cwd
 
     - name: Install tools using Python PyPip
