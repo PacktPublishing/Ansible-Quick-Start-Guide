@@ -388,6 +388,8 @@ mkpasswd --method=sha-512
          - r-base
          - r-base-core
          - python3-dev
+         - python3-pip
+         - libgsl0-dev
 
     - name: Install tools using Perl CPAN
       cpanm:
@@ -398,8 +400,7 @@ mkpasswd --method=sha-512
          - Cwd
 
     - name: Install tools using Python PyPip
-      pip:
-          name: '{{ item }}'
+      shell: pip3 install -U '{{ item }}'
       with_items:
          - numpy 
          - cython
@@ -440,7 +441,7 @@ mkpasswd --method=sha-512
           clone: yes
 
     - name: Setup the application using python compiler
-      command: cd /usr/local/DESMAN; python3 ./setup.py install
+      shell: cd /usr/local/DESMAN; python3 setup.py install
 ```
 ### Use case 2: LAMP server setup and configuration
 
