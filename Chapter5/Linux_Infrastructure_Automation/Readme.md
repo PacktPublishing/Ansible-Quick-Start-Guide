@@ -371,7 +371,7 @@ mkpasswd --method=sha-512
          - libreoffice-calc
          - libreoffice-impress
          - libreoffice-writer
-         - gnome-tweak_tool
+         - gnome-tweak-tool
          - firefox
          - thunderbird
          - nautilus
