@@ -428,10 +428,7 @@ mkpasswd --method=sha-512
     - name: Build the tool on the hosts
       make:
           chdir: /usr/local/newick-utils-1.6
-          target: '{{ item }}'
-      with_items:
-         - check 
-         - install
+          target: install
 
     - name: Create Symlink to the tool’s binary to be executable from anywhere in the system 
       file:  
