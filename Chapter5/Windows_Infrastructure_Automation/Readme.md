@@ -8,7 +8,6 @@
 ---
 - name:  Windows updates management
   hosts: windows
-  become: yes
   gather_facts: yes
   tasks:
    - name: Create the registry path for Windows Updates
@@ -65,7 +64,6 @@
 ---
 - name:  Windows system configuration and optimisation
   hosts: windows
-  become: yes
   gather_facts: yes
   vars:
     macaddress: "{{ (ansible_interfaces|first).macaddress|default(mac|default('')) }}"
@@ -126,7 +124,6 @@
 ---
 - name:  Application management on Windows hosts
   hosts: windows
-  become: yes
   gather_facts: yes
   tasks:
    - name: Install latest updated PowerShell for optimised Chocolatey commands
@@ -163,7 +160,6 @@
 ---
 - name:  Setup Nagios agent on Windows hosts
   hosts: windows
-  become: yes
   gather_facts: yes
   tasks:
    - name: Copy the MSI file for the NSClient to the windows host
