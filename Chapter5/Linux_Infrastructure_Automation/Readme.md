@@ -180,7 +180,7 @@ mkpasswd --method=sha-512
 
     - name: Setup time zone on all local hosts
       timezone: 
-         name: ''Europe/London”
+         name: "Europe/London"
 
     - name: Fix time zone on Red Hat 6
       blockinfile:
@@ -204,7 +204,7 @@ mkpasswd --method=sha-512
          name: ntpd
          enabled: True
          state: restarted
-      when: ansible_os_family == RedHat
+      when: ansible_os_family == 'RedHat'
 
     - name: Add NFS and SMB support to automount
       blockinfile: 
@@ -217,7 +217,7 @@ mkpasswd --method=sha-512
     - name: create the NFS and SMB AutoFS configuration files
       file: 
          name: '{{ item }}'
-         state: present
+         state: touch
       with_items:
          - '/etc/auto.nfs'
          - '/etc/auto.cifs'
