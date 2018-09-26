@@ -138,8 +138,8 @@ template/smb.conf.j2:
  server string = Samba Server %v
  netbios name = {{ os_name }}
  security = user
-map to guest = bad user
-dns proxy = no
+ map to guest = bad user
+ dns proxy = no
 
 #========= Share Definitions =========
 # Samba shared folder:
@@ -303,7 +303,7 @@ tasks/main.yml:
     group: "{{ smb_grp }}"
     mode: '0777'
     recurse: yes
-   when: share_dir.stat.exists == False
+  when: share_dir.stat.exists == False
 
 - name: Deploy the Samba configuration file
   template:
@@ -336,15 +336,15 @@ tasks/main.yml:
   service:
     name: "{{ item }}"
     state: restarted
-with_items: "{{ debian_smb_services }}"
-when: ansible_os_family == 'Debian'
+  with_items: "{{ debian_smb_services }}"
+  when: ansible_os_family == 'Debian'
 
 - name: Restart Samba
   service:
     name: "{{ item }}"
     state: restarted
-with_items: "{{ redhat_smb_services }}"
-when: ansible_os_family == 'RedHat'
+  with_items: "{{ redhat_smb_services }}"
+  when: ansible_os_family == 'RedHat'
 ```
 ## Ansible Roles usage
 ```
