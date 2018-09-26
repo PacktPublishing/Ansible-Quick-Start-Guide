@@ -8,23 +8,23 @@ tasks/main.yml:
 ---
     - name: check if NTP is installed
       stat:  
-          path: /etc/init.d/ntpd
+          path: /etc/init.d/ntp
       register: tool_status
 
     - include_tasks: debian.yml 
-      when: tool_status.stat.exisits
+      when: not tool_status.stat.exisits
 
     - name: Copy the NTP config to remote host 
       template: 
-          src: /template/ntp.conf.j2
-          dest: /etc/ntpd/ntpd.conf
+          src: ntp.conf.j2
+          dest: /etc/ntp.conf
           mode: 0400
       notify: 
            - Restart ntp
 
 tasks/debian.yml:
 ---
-    - name: Copy a NTP config to remote host 
+    - name: install ntp on the remote host 
       apt: 
           name: ntp
           state: latest
@@ -36,7 +36,7 @@ handlers/main.yml:
 ---
     - name: Restart ntp
       service: 
-          name: ntpd
+          name: ntp
           state: restarted
 ```
 ### Vars folder
@@ -49,12 +49,20 @@ ntpserv2: 1.uk.pool.ntp.org
 ### Templates folder
 ```
 template/ntp.conf.j2:
-…
+driftfile /var/lib/ntp/ntp.drift
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
 
-server {{ ntpserv1 }}
-server {{ ntpserv2 }}
+loop {{ ntpserv1 }}
+loop {{ ntpserv2 }}
 
-…
+pool ntp.ubuntu.com
+restrict -4 default kod notrap nomodify nopeer noquery limited
+restrict -6 default kod notrap nomodify nopeer noquery limited
+restrict 127.0.0.1
+restrict ::1
+restrict source notrap nomodify noquery
 ```
 ### Defaults folder
 ```
@@ -67,17 +75,28 @@ ID_key: "None"
 ```
 meta/main.yml:
 ---
-dependencies:
-   - role: named
-     vars:
-         DNS1: 8.8.8.8
-         DNS2: 8.8.4.4
+galaxy_info:
+  author: medalibi
+  description: NTP client installn
+  company: Packt
+  license: license (GPLv3, BSD)
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      version:
+        - 16.04
+        - 18.04
+  galaxy_tags:
+    - networking
+    - system
+
+dependencies: []
 ```
 ### Test folder
 ```
-test/main.yml:
+tests/test.yml:
 ---
-- hosts: localhost
+- hosts: servers
   remote_user: setup
   become: yes
   roles:
