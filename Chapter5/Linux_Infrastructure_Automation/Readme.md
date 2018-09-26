@@ -237,15 +237,31 @@ mkpasswd --method=sha-512
   become: yes
   gather_facts: yes
   tasks:
-    - name: Install the dependencies to enable NFS and SMB clients
-      package: 
+    - name: Install the dependencies to enable NFS and 
+      SMB clients on Linux Debian family
+      apt: 
+         pkg: '{{ item }}'
+         state: latest
+      with_items:
+         - nfs-common
+         - rpcbind
+         - cifs-utils
+         - autofs
+      when: ansible_os_family == 'Debian'
+
+    - name: Install the dependencies to enable NFS and 
+      SMB clients on Linux Red Hat family
+      yum: 
          name: '{{ item }}'
          state: latest
       with_items:
          - nfs-common
-         - nfs-utils
          - rpcbind
          - cifs-utils
+         - nfs-utils
+         - nfs-utils-lib
+         - autofs
+      when: ansible_os_family == 'RedHat'
 
     - name: Block none authorised NFS servers using rpcbind
       lineinfile: 
