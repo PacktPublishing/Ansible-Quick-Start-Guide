@@ -38,13 +38,13 @@
 ```
 # One-liner tasks
    - name: Copy user configuration
-     copy: src=/home/admin/setup.conf dest=/usr/loca/projects/ owner=setup group=dev mode=0677 backup=yes 
+     copy: src=/home/admin/setup.conf dest=/usr/local/projects/ owner=setup group=dev mode=0677 backup=yes 
 
 # Task folowing YAML syntax
    - name: Copy user configuration
      copy: 
        src: /home/admin/setup.conf
-       dest: /usr/loca/projects/
+       dest: /usr/local/projects/
        owner: setup
        group: dev
        mode: 0677
@@ -70,11 +70,9 @@
   gather_facts: false
   tasks:
     - name: create folder for user1
-      file:
-       path: /usr/local/projects/user1
-       mode: 1777
-       state: directory
-       become_user: user1
+      command: mkdir /usr/local/projects/user1
+      become_user: user1
+       
     - name: Create test space for setup
       file:
        path: /usr/local/projects/setup/test
@@ -124,7 +122,7 @@ ansible_connection: docker
 
     - name: Change ntp service config
       lineinfile:
-       path: /etc/ntp/ntp.conf
+       path: /etc/ntp.conf
        line: "server 0.us.pool.ntp.org"
 
     - name: Flush the playbook handlers
@@ -143,6 +141,10 @@ ansible_connection: docker
   hosts: servers
   include: passwords_playbook.yml
   tasks:
-    - name: Test mysql access
-      shell: mysql -u user1 -p {{ mysql_user1_password }}
+    - name: add a MySQL user
+      mysql_user:
+        name: user1
+        password: {{ mysql_user1_password }}
+        priv: '*.*:ALL'
+        state: present  
 ```
