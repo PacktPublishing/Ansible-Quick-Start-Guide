@@ -44,12 +44,12 @@
     - name: install python development on Debian systems
       apt: 
           name: python-dev
-      when: 'ansible_distribition == "Debian"'
+      when: ansible_os_family == "Debian"
 
     - name: install python development on Red Hat systems
       yum: 
           name: python-devel
-      when: 'ansible_distribition == "RedHat"'
+      when: ansible_os_family == "RedHat"
 ```
 ## Smarter usage for Ansible loops
 ```
@@ -62,14 +62,14 @@
   tasks:
     - name: Copy user config files 
       copy: 
-          src: '{{ item.src  }}'
-          dest: '{{  item.dest }}'
-          mode: '{{ item.mode | default("0744")  }}'
-          owner:  '{{ item.owner | default("nobody") }}'
-      when_items: 
-        - '{{ src="/media/share/config/user1.conf" dest="/usr/loca/projetsfolder/user1" mode="0774" owner="user1" }}'
-        - '{{ src="/media/share/config/user2.conf" dest="/usr/loca/projetsfolder/user2" mode="0700" owner="user2" }}'
-        - '{{ src="/media/share/samples/users.conf" dest="/usr/loca/projetsfolder/" mode="0777" }}'
+          src: "{{ item.src }}"
+          dest: "{{ item.dest }}"
+          mode: "{{ item.mode | default('0744')  }}"
+          owner: "{{ item.owner | default('nobody') }}"
+      with_items: 
+        - { src: "/media/share/config/user1.conf", dest: "/usr/local/projetsfolder/user1", mode: "0774", owner: "user1" }}
+        - { src: "/media/share/config/user2.conf", dest: "/usr/local/projetsfolder/user2", mode: "0700", owner: "user2" }}
+        - { src: "/media/share/samples/users.conf", dest: "/usr/local/projetsfolder/", mode: "0777" }}
 ```
 ## Template file usage
 ```
