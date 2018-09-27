@@ -272,9 +272,7 @@ tasks/RedHat_OS.yml:
 tasks/main.yml:
 ---
 - name: Setup Samba based on host OS
-  include_tasks: "{{ item }}"
-  with_items:
-    - "{{ ansible_os_family }}_OS.yml"
+  include_tasks: "{{ ansible_os_family }}_OS.yml"
 
 - name: Create the Samba share access group 
   group:
