@@ -131,7 +131,7 @@ ansible_connection: docker
   handlers:
     - name: restart ntp service
       service:
-       name: ntpd
+       name: ntp
        state: restarted
 ```
 ## Password usage in playbooks
