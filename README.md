@@ -20,8 +20,8 @@ This book covers the following exciting features:
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1789532930) today!
 
-https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"> src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
-alt="https://www.packtpub.com/" border="5" />
+<a https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"> src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
+alt="https://www.packtpub.com/" border="5" /></a>
 
 
 ## Instructions and Navigations
