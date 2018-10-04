@@ -51,7 +51,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 
 ### Related products 
-* Containerization with Ansible 2 [[Packt]](https://www.packtpub.com/virtualization-and-cloud/containerization-ansible-2?utm_source=github&utm_medium=repository&utm_campaign=9781788291910) [[Amazon]] (https://www.amazon.com/dp/1788291913)
+* Containerization with Ansible 2 [[Packt]](https://www.packtpub.com/virtualization-and-cloud/containerization-ansible-2?utm_source=github&utm_medium=repository&utm_campaign=9781788291910) [[Amazon]](https://www.amazon.com/dp/1788291913)
 
 * Security Automation with Ansible 2 [[Packt]](https://www.packtpub.com/virtualization-and-cloud/security-automation-ansible-2?utm_source=github&utm_medium=repository&utm_campaign=9781788394512) [[Amazon]](https://www.amazon.com/dp/1788394518)
 
