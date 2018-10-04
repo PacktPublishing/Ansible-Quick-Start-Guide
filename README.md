@@ -59,7 +59,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 **Mohamed Alibi**
 is a Linux system administrator who works at the European Bioinformatics Institute, EMBL-EBI. His area of specialization is mass virtual machine and container provisioning and infrastructure administration for medium-sized distributed bioinformatics training facilities. He always keeps abreast of the latest innovations and developments in new technologies to solve his daily challenges. He holds an MSc in Networking and Computer Sciences in a collaborative program with the University of Illinois Urbana-Champaign and the IPT of Tunis, where he expanded his expertise in grid computing data management between the NCSA and IGB under the NIH project H3ABioNet. He published his first book in 2015 with Packt, called Mastering CentOS 7 Linux Server.	
 
-## Other books by the authors
+## Other books by the author
 * [Mastering CentOS 7 Linux Server](https://www.packtpub.com/networking-and-servers/mastering-centos-7-linux-server?utm_source=github&utm_medium=repository&utm_campaign=9781785282393)
 
 ### Suggestions and Feedback
