@@ -40,10 +40,10 @@ With the following software and hardware list you can run all code files present
 
 ### Software and Hardware List
 
-| Chapter  | Software required                                                               | OS required                        |     |          |                                                                                 |                                    |
+| Chapter  | Software required                                                               | OS required                        |     
 | -------- | ------------------------------------------------------------------------------  |------------------------------------|
 | 2,3,4,7,8|Virtual Box 5.2.12, Vagrant 2.2.1, Openssh-server 7.6p1, Cisco Packet Tracer 7.2 | Windows, Mac OS X, and Linux (Any) |
-| 5,6      |Virtual Box 5.2.12, Vagrant 2.2.1, Openssh-server 7.6p1, Cisco Packet Tracer 7.2| Windows, Mac OS X, and Linux (Any)  |
+| 5,6      |Virtual Box 5.2.12, Vagrant 2.2.1, Openssh-server 7.6p1, Cisco Packet Tracer 7.2 | Windows, Mac OS X, and Linux (Any) |
 
 
 
@@ -55,7 +55,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 * Security Automation with Ansible 2 [[Packt]](https://www.packtpub.com/virtualization-and-cloud/security-automation-ansible-2?utm_source=github&utm_medium=repository&utm_campaign=9781788394512) [[Amazon]](https://www.amazon.com/dp/1788394518)
 
-## Get to Know the Author(s)
+## Get to Know the Author
 **Mohamed Alibi**
 is a Linux system administrator who works at the European Bioinformatics Institute, EMBL-EBI. His area of specialization is mass virtual machine and container provisioning and infrastructure administration for medium-sized distributed bioinformatics training facilities. He always keeps abreast of the latest innovations and developments in new technologies to solve his daily challenges. He holds an MSc in Networking and Computer Sciences in a collaborative program with the University of Illinois Urbana-Champaign and the IPT of Tunis, where he expanded his expertise in grid computing data management between the NCSA and IGB under the NIH project H3ABioNet. He published his first book in 2015 with Packt, called Mastering CentOS 7 Linux Server.	
 
